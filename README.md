@@ -17,9 +17,11 @@ overdue and an AI copilot that turns a rough idea into a task list.
 ```bash
 npm install
 cp .env.example .env       # fill in DATABASE_URL, OAuth creds, VAPID keys
-npx prisma migrate dev --name init
+npx prisma db push
 npm run dev
 ```
+
+In production, `npm run build` runs `prisma db push` automatically before `next build`, so a fresh deploy provisions its own schema — no separate migration step needed.
 
 Open http://localhost:3000, sign in with Google or GitHub, and start adding tasks.
 
